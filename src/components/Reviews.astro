@@ -1,0 +1,199 @@
+---
+const reviews = [
+  {
+    name: "Sarah Johnson",
+    role: "Android enthusiast",
+    text: "ModApkSoft helped me finally understand which permissions to check before installing modded apps. Their safety-first approach saved me from malware more than once.",
+    rating: 5
+  },
+  {
+    name: "Michael Chen",
+    role: "Mobile gamer",
+    text: "The customization guides are clear and practical. I set up my launcher, icon pack, and widgets in under an hour without rooting my phone.",
+    rating: 5
+  },
+  {
+    name: "Emily Rodriguez",
+    role: "Privacy-focused user",
+    text: "Finally, a site that explains trackers and permissions in plain English. ModApkSoft is my first stop before trying any new app.",
+    rating: 5
+  },
+  {
+    name: "David Park",
+    role: "Tech blogger",
+    text: "I recommend ModApkSoft to readers who want reliable app guides. The tutorials are detailed without being overwhelming.",
+    rating: 5
+  },
+  {
+    name: "Amanda Foster",
+    role: "Power user",
+    text: "From battery optimization to backup strategies, the guides here actually work. No fluff, just useful steps.",
+    rating: 5
+  },
+  {
+    name: "Robert Kim",
+    role: "App developer",
+    text: "ModApkSoft does a great job explaining app behavior to non-technical users. It is a valuable resource for the Android community.",
+    rating: 5
+  }
+];
+
+// Randomize and select 3 reviews
+const shuffledReviews = reviews.sort(() => Math.random() - 0.5);
+const selectedReviews = shuffledReviews.slice(0, 3);
+---
+
+<section class="reviews-section" aria-labelledby="reviews-heading">
+  <div class="container">
+    <header class="section-header">
+      <span class="eyebrow">Social proof</span>
+      <h2 id="reviews-heading">Trusted by Android users</h2>
+      <p>See how readers rely on ModApkSoft to discover safer apps, customize their devices, and protect their privacy.</p>
+    </header>
+
+    <div class="reviews-grid">
+      {selectedReviews.map(review => (
+        <article class="review-card">
+          <div class="stars" aria-label={`Rated ${review.rating} out of 5 stars`}>
+            {'★'.repeat(review.rating)}
+          </div>
+          <blockquote>"{review.text}"</blockquote>
+          <footer>
+            <div class="avatar" aria-hidden="true">{review.name.charAt(0)}</div>
+            <div class="author-info">
+              <cite>{review.name}</cite>
+              <span class="role">{review.role}</span>
+            </div>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-section {
+    padding: 6rem 2rem;
+    background: var(--color-slate-50);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 4rem;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-indigo-600);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--color-slate-900);
+    line-height: 1.2;
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--color-slate-600);
+    line-height: 1.7;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    background: var(--color-white);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--color-slate-100);
+    box-shadow: 0 4px 6px rgba(15, 23, 42, 0.03);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stars {
+    color: var(--color-amber-400);
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.125rem;
+  }
+
+  blockquote {
+    font-size: 1rem;
+    color: var(--color-slate-700);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    flex: 1;
+    font-style: normal;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid var(--color-slate-100);
+    padding-top: 1.25rem;
+  }
+
+  .avatar {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, var(--color-indigo-500) 0%, var(--color-violet-500) 100%);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  cite {
+    font-weight: 700;
+    color: var(--color-slate-900);
+    font-style: normal;
+    font-size: 0.9375rem;
+  }
+
+  .role {
+    font-size: 0.875rem;
+    color: var(--color-slate-500);
+  }
+
+  @media (max-width: 640px) {
+    .reviews-section {
+      padding: 4rem 1.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

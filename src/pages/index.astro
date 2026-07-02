@@ -1,0 +1,514 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FAQ from '../components/FAQ.astro';
+import Reviews from '../components/Reviews.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import StatCard from '../components/StatCard.astro';
+import StepCard from '../components/StepCard.astro';
+
+const siteConfig = {
+  referenceUrl: '/blog',
+  heroTitle: 'Discover safer, smarter ways to use and customize apps',
+  heroSubtitle: 'ModApkSoft shares practical guides, modding tips, and app comparisons that help Android users get more from their devices without the guesswork.',
+  ctaPrimary: 'Browse the blog',
+  ctaSecondary: 'See popular guides',
+  stats: [
+    { value: '500+', label: 'Curated app guides' },
+    { value: '1M+', label: 'Monthly readers' },
+    { value: '50+', label: 'Expert contributors' },
+    { value: '4.8', label: 'Average reader rating' }
+  ],
+  features: [
+    {
+      icon: '🛡️',
+      title: 'Safety-First Modding',
+      description: 'Learn how to verify APK sources, check permissions, and avoid malware before installing any modified app.'
+    },
+    {
+      icon: '📱',
+      title: 'Android App Guides',
+      description: 'Step-by-step tutorials for popular apps, launchers, and tools—written for everyday users, not developers.'
+    },
+    {
+      icon: '⚡',
+      title: 'Performance Tips',
+      description: 'Battery, storage, and speed optimizations that keep your phone running smoothly without root access.'
+    },
+    {
+      icon: '🔒',
+      title: 'Privacy Explainers',
+      description: 'Plain-language breakdowns of app permissions, trackers, and settings that protect your personal data.'
+    },
+    {
+      icon: '🧩',
+      title: 'Customization Ideas',
+      description: 'Themes, icon packs, widgets, and launcher setups to make your device feel truly yours.'
+    },
+    {
+      icon: '🤝',
+      title: 'Community Driven',
+      description: 'Recommendations and warnings crowdsourced from a community of active Android enthusiasts.'
+    }
+  ],
+  steps: [
+    {
+      title: 'Explore',
+      description: 'Browse guides organized by app category, use case, and skill level.'
+    },
+    {
+      title: 'Learn',
+      description: 'Read clear instructions with screenshots, safety checks, and alternative options.'
+    },
+    {
+      title: 'Apply',
+      description: 'Follow the steps at your own pace and customize your device with confidence.'
+    },
+    {
+      title: 'Share',
+      description: 'Leave feedback, suggest updates, and help others find reliable app information.'
+    }
+  ]
+};
+---
+
+<Layout title={siteConfig.heroTitle} description={siteConfig.heroSubtitle}>
+  <!-- Hero Section -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-background" aria-hidden="true">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        Trusted by 150+ technology-driven companies
+      </div>
+      <h1 id="hero-heading">{siteConfig.heroTitle}</h1>
+      <p class="hero-subtitle">{siteConfig.heroSubtitle}</p>
+      <div class="hero-actions">
+        <a href={siteConfig.referenceUrl} class="btn btn-primary">{siteConfig.ctaPrimary}</a>
+        <a href="#features" class="btn btn-secondary">{siteConfig.ctaSecondary}</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-avatars" aria-hidden="true">
+          <span>👩‍💻</span>
+          <span>👨‍💻</span>
+          <span>🧑‍💻</span>
+          <span>👩‍💼</span>
+        </div>
+        <p>Rated 4.9/5 by engineering leaders</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section" aria-label="Company statistics">
+    <div class="stats-container">
+      {siteConfig.stats.map(stat => (
+        <StatCard value={stat.value} label={stat.label} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section" aria-labelledby="features-heading">
+    <div class="container">
+      <header class="section-header">
+        <span class="eyebrow">Platform capabilities</span>
+        <h2 id="features-heading">Everything you need to get more from your apps</h2>
+        <p>From safety checks to customization ideas, ModApkSoft covers the full journey of using Android apps with confidence.</p>
+      </header>
+      <div class="features-grid">
+        {siteConfig.features.map(feature => (
+          <FeatureCard icon={feature.icon} title={feature.title} description={feature.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="steps-section" aria-labelledby="steps-heading">
+    <div class="container steps-layout">
+      <div class="steps-intro">
+        <span class="eyebrow">How it works</span>
+        <h2 id="steps-heading">A simple process for better app experiences</h2>
+        <p>We combine deep engineering expertise with a structured delivery model so projects finish on time, on budget, and without surprises.</p>
+        <a href={siteConfig.referenceUrl} class="btn btn-primary">Schedule a discovery call</a>
+      </div>
+      <div class="steps-list">
+        {siteConfig.steps.map((step, index) => (
+          <StepCard number={index + 1} title={step.title} description={step.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <Reviews />
+
+  <!-- FAQ Section -->
+  <FAQ />
+
+  <!-- Final CTA Section -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="cta-content">
+      <h2 id="cta-heading">Ready to level up your Android setup?</h2>
+      <p>Join the readers who rely on ModApkSoft for safe, practical app guides and customization ideas.</p>
+      <div class="cta-actions">
+        <a href={siteConfig.referenceUrl} class="btn btn-primary btn-large">Start your free assessment</a>
+        <a href="/blog" class="btn btn-ghost">Read our latest insights</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+    color: var(--color-white);
+    padding: 7rem 1.5rem;
+    text-align: center;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+  }
+
+  .orb-1 {
+    width: 28rem;
+    height: 28rem;
+    background: var(--color-violet-500);
+    top: -8rem;
+    right: -6rem;
+  }
+
+  .orb-2 {
+    width: 24rem;
+    height: 24rem;
+    background: var(--color-indigo-500);
+    bottom: -10rem;
+    left: -6rem;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #e0e7ff;
+    margin-bottom: 1.75rem;
+  }
+
+  .badge-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--color-emerald-500);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--color-emerald-500);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    color: #cbd5e1;
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 1.75rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--color-indigo-500) 0%, var(--color-violet-600) 100%);
+    color: var(--color-white);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.35);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 10px 28px rgba(79, 70, 229, 0.45);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-large {
+    padding: 1rem 2.25rem;
+    font-size: 1.0625rem;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-white);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.875rem;
+    color: #94a3b8;
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .trust-avatars {
+    display: flex;
+  }
+
+  .trust-avatars span {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--color-slate-700);
+    border: 2px solid var(--color-slate-800);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    margin-left: -0.5rem;
+  }
+
+  .trust-avatars span:first-child {
+    margin-left: 0;
+  }
+
+  .stats-section {
+    padding: 3rem 1.5rem;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-slate-100);
+  }
+
+  .stats-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .features-section {
+    padding: 6rem 1.5rem;
+    background: var(--color-slate-50);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 4rem;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-indigo-600);
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+    color: var(--color-slate-900);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .section-header p {
+    font-size: 1.125rem;
+    color: var(--color-slate-600);
+    line-height: 1.7;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .steps-section {
+    padding: 6rem 1.5rem;
+    background: var(--color-white);
+  }
+
+  .steps-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .steps-intro {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .steps-intro h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+    color: var(--color-slate-900);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .steps-intro p {
+    font-size: 1.125rem;
+    color: var(--color-slate-600);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .cta-section {
+    padding: 6rem 1.5rem;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
+  }
+
+  .cta-section p {
+    font-size: 1.125rem;
+    color: #cbd5e1;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 5rem 1.5rem;
+    }
+
+    .steps-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .steps-intro {
+      position: static;
+    }
+
+    .features-section,
+    .steps-section,
+    .cta-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .stats-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-actions,
+    .cta-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    .stats-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
