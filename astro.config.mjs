@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://modapksoft.com',
+  site: 'https://modapksoftcom-production.up.railway.app',
   integrations: [
     sitemap({
       canonicalURLs: true,
